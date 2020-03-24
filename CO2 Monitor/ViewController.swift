@@ -9,6 +9,16 @@
 import Cocoa
 
 class ViewController: NSViewController, Co2DeviceDelegate {
+  private let goodCo2 = 800
+  private let okCo2 = 1200
+  
+  private let co2Warning = 1000
+  private let co2WarningTimeoutInS = 15 * 60
+  
+  private let coldTemp: Float = 19.0
+  private let goodTemp: Float = 23.0
+  private let okTemp: Float = 25.0
+  
   @IBOutlet weak var statusLabel: NSTextField!
   
   @IBOutlet weak var co2Label: NSTextField!
@@ -21,11 +31,16 @@ class ViewController: NSViewController, Co2DeviceDelegate {
   
   var co2Device: Co2Device? = nil
   
+  var allowWarning = true
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // moisture capacity T in °C => 5.02 + 0.323*T + 8.18e-3*T^2 + 3.12e-4*T^3
-    //SlackSender(hook: "https://hooks.slack.com/services/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").sendMessage(text: "test")
+    // TODO: moisture capacity T in °C => 5.02 + 0.323*T + 8.18e-3*T^2 + 3.12e-4*T^3
+    
+    // TODO: SlackSender(hook: "SLACK_HOOK_URL").sendMessage(text: "test")
+        
+    // TODO: show co2 increase over last 10min -> guess number of people in room?
         
     let statusBar = NSStatusBar.system
     co2StatusBarItem = statusBar.statusItem(withLength: NSStatusItem.variableLength)
@@ -41,12 +56,26 @@ class ViewController: NSViewController, Co2DeviceDelegate {
   func OnNewCo2Reading(co2: Int) {
     co2Label.stringValue = "\(co2)ppm"
 
-    if(co2 <= 800) {
+    if(co2 <= goodCo2) {
       co2Label.textColor = NSColor(named: NSColor.Name("Good"))
-    } else if(co2 <= 1200) {
+    } else if(co2 <= okCo2) {
       co2Label.textColor = NSColor(named: NSColor.Name("Ok"))
     } else {
       co2Label.textColor = NSColor(named: NSColor.Name("Bad"))
+    }
+    
+    if(co2 > co2Warning && allowWarning) {
+      let alert = NSAlert()
+      alert.messageText = "Open a window!"
+      alert.informativeText = "The CO2 concentration is above \(co2Warning)ppm."
+      alert.alertStyle = .warning
+      alert.addButton(withTitle: "OK")
+      alert.runModal()
+      
+      allowWarning = false
+      Timer.scheduledTimer(withTimeInterval: TimeInterval(co2WarningTimeoutInS), repeats: false) { (timer) in
+        self.allowWarning = true
+      }
     }
     
     UpdateStatusLabel()
@@ -58,11 +87,11 @@ class ViewController: NSViewController, Co2DeviceDelegate {
 
     tempLabel.stringValue = "\(formattedTemp)°C"
     
-    if(temperature <= 19.0) {
+    if(temperature <= coldTemp) {
       tempLabel.textColor = NSColor(named: NSColor.Name("Cold"))
-    } else if(temperature <= 23.0) {
+    } else if(temperature <= goodTemp) {
       tempLabel.textColor = NSColor(named: NSColor.Name("Good"))
-    } else if(temperature <= 25.0) {
+    } else if(temperature <= okTemp) {
       tempLabel.textColor = NSColor(named: NSColor.Name("Ok"))
     } else {
       tempLabel.textColor = NSColor(named: NSColor.Name("Bad"))
