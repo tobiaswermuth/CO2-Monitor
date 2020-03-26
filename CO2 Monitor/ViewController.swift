@@ -65,6 +65,8 @@ class ViewController: NSViewController, Co2DeviceDelegate {
     }
     
     if(co2 > co2Warning && allowWarning) {
+      NSRunningApplication.current.activate(options: NSApplication.ActivationOptions.activateIgnoringOtherApps)
+
       let alert = NSAlert()
       alert.messageText = "Open a window!"
       alert.informativeText = "The CO2 concentration is above \(co2Warning)ppm."
