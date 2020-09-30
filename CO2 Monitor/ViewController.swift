@@ -65,23 +65,27 @@ class ViewController: NSViewController, Co2DeviceDelegate {
     }
     
     if(co2 > co2Warning && allowWarning) {
-      NSRunningApplication.current.activate(options: NSApplication.ActivationOptions.activateIgnoringOtherApps)
-
-      let alert = NSAlert()
-      alert.messageText = "Open a window!"
-      alert.informativeText = "The CO2 concentration is above \(co2Warning)ppm."
-      alert.alertStyle = .warning
-      alert.addButton(withTitle: "OK")
-      alert.runModal()
-      
-      allowWarning = false
-      Timer.scheduledTimer(withTimeInterval: TimeInterval(co2WarningTimeoutInS), repeats: false) { (timer) in
-        self.allowWarning = true
-      }
+      // ShowWarningAlert()
     }
     
     UpdateStatusLabel()
     blinkCo2Indicator()
+  }
+    
+  func ShowWarningAlert() {
+    NSRunningApplication.current.activate(options: NSApplication.ActivationOptions.activateIgnoringOtherApps)
+  
+    let alert = NSAlert()
+    alert.messageText = "Open a window!"
+    alert.informativeText = "The CO2 concentration is above \(co2Warning)ppm."
+    alert.alertStyle = .warning
+    alert.addButton(withTitle: "OK")
+    alert.runModal()
+  
+    allowWarning = false
+    Timer.scheduledTimer(withTimeInterval: TimeInterval(co2WarningTimeoutInS), repeats: false) { (timer) in
+      self.allowWarning = true
+    }
   }
   
   func OnNewTemperatureReading(temperature: Float) {
