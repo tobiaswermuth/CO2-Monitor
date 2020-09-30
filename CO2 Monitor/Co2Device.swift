@@ -10,8 +10,8 @@ import Foundation
 import hidapi
 
 protocol Co2DeviceDelegate {
-  func OnNewCo2Reading(co2: Int)
-  func OnNewTemperatureReading(temperature: Float)
+  func OnNewCo2Reading(ppmCo2: Int)
+  func OnNewTemperatureReading(cTemperature: Float)
   func OnConnectionStatusUpdated(status: ConnectionStatus)
 }
 
@@ -74,7 +74,7 @@ class Co2Device {
       case Reading.CO2(let co2): do {
           lastCo2Reading = co2
           DispatchQueue.main.async {
-            self.delegate.OnNewCo2Reading(co2: co2)
+            self.delegate.OnNewCo2Reading(ppmCo2: co2)
           }
           gotCo2 = true
         }
@@ -82,7 +82,7 @@ class Co2Device {
       case Reading.Temperature(let temp): do {
           lastTemperatureReading = temp
           DispatchQueue.main.async {
-            self.delegate.OnNewTemperatureReading(temperature: temp)
+            self.delegate.OnNewTemperatureReading(cTemperature: temp)
           }
           gotTemp = true
         }

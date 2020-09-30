@@ -53,18 +53,18 @@ class ViewController: NSViewController, Co2DeviceDelegate {
     co2Device!.startContinuousUpdates()
   }
   
-  func OnNewCo2Reading(co2: Int) {
-    co2Label.stringValue = "\(co2)ppm"
+  func OnNewCo2Reading(ppmCo2: Int) {
+    co2Label.stringValue = "\(ppmCo2)ppm"
 
-    if(co2 <= goodCo2) {
+    if(ppmCo2 <= goodCo2) {
       co2Label.textColor = NSColor(named: NSColor.Name("Good"))
-    } else if(co2 <= okCo2) {
+    } else if(ppmCo2 <= okCo2) {
       co2Label.textColor = NSColor(named: NSColor.Name("Ok"))
     } else {
       co2Label.textColor = NSColor(named: NSColor.Name("Bad"))
     }
     
-    if(co2 > co2Warning && allowWarning) {
+    if(ppmCo2 > co2Warning && allowWarning) {
       // ShowWarningAlert()
     }
     
@@ -88,16 +88,16 @@ class ViewController: NSViewController, Co2DeviceDelegate {
     }
   }
   
-  func OnNewTemperatureReading(temperature: Float) {
-    let formattedTemp = String(format: "%.1f", temperature)
+  func OnNewTemperatureReading(cTemperature: Float) {
+    let formattedTemp = String(format: "%.1f", cTemperature)
 
     tempLabel.stringValue = "\(formattedTemp)°C"
     
-    if(temperature <= coldTemp) {
+    if(cTemperature <= coldTemp) {
       tempLabel.textColor = NSColor(named: NSColor.Name("Cold"))
-    } else if(temperature <= goodTemp) {
+    } else if(cTemperature <= goodTemp) {
       tempLabel.textColor = NSColor(named: NSColor.Name("Good"))
-    } else if(temperature <= okTemp) {
+    } else if(cTemperature <= okTemp) {
       tempLabel.textColor = NSColor(named: NSColor.Name("Ok"))
     } else {
       tempLabel.textColor = NSColor(named: NSColor.Name("Bad"))
