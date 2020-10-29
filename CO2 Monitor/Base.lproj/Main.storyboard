@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -707,11 +707,11 @@
             <objects>
                 <viewController title="CO2 Meter" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="ViewController" customModule="CO2_Monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="206" height="104"/>
+                        <rect key="frame" x="0.0" y="0.0" width="206" height="116"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sKz-8g-PlT">
-                                <rect key="frame" x="18" y="68" width="47" height="16"/>
+                                <rect key="frame" x="18" y="80" width="47" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Status:" id="vhG-bu-SdV">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -719,7 +719,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1UH-3d-niY">
-                                <rect key="frame" x="69" y="68" width="104" height="16"/>
+                                <rect key="frame" x="69" y="80" width="104" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="PxA-YA-Ylr"/>
                                 </constraints>
@@ -730,7 +730,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q7Q-gw-Sgv">
-                                <rect key="frame" x="18" y="44" width="35" height="16"/>
+                                <rect key="frame" x="18" y="56" width="35" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="CO2:" id="b2E-gT-f75">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -738,7 +738,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Tm-mS-cf7">
-                                <rect key="frame" x="69" y="44" width="104" height="16"/>
+                                <rect key="frame" x="69" y="56" width="104" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="E3q-tu-2DP"/>
                                 </constraints>
@@ -749,7 +749,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WRf-dz-KjA">
-                                <rect key="frame" x="18" y="20" width="42" height="16"/>
+                                <rect key="frame" x="18" y="32" width="42" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Temp:" id="7K7-hQ-trY">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -757,7 +757,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BMX-ff-mN6">
-                                <rect key="frame" x="69" y="20" width="104" height="16"/>
+                                <rect key="frame" x="69" y="32" width="104" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="hvG-H4-X8N"/>
                                 </constraints>
@@ -768,18 +768,28 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jvY-VC-6SS">
-                                <rect key="frame" x="2" y="44" width="16" height="16"/>
+                                <rect key="frame" x="2" y="56" width="16" height="16"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="h5N-gJ-jnA"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AR3-Am-K48">
-                                <rect key="frame" x="2" y="20" width="16" height="16"/>
+                                <rect key="frame" x="2" y="32" width="16" height="16"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="lPw-95-3zc"/>
                             </imageView>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EK5-zY-Nct">
+                                <rect key="frame" x="20" y="3" width="166" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Slack Hook" drawsBackground="YES" id="eHv-CY-UfN">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="sKz-8g-PlT" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="0gM-wC-5Rt"/>
+                            <constraint firstItem="EK5-zY-Nct" firstAttribute="top" secondItem="WRf-dz-KjA" secondAttribute="bottom" constant="8" symbolic="YES" id="3X9-md-may"/>
                             <constraint firstItem="sKz-8g-PlT" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="4yY-2L-lZf"/>
                             <constraint firstItem="1UH-3d-niY" firstAttribute="leading" secondItem="sKz-8g-PlT" secondAttribute="trailing" constant="8" id="7yv-gb-vpV"/>
+                            <constraint firstItem="EK5-zY-Nct" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="8bV-YD-5IZ"/>
                             <constraint firstItem="WRf-dz-KjA" firstAttribute="top" secondItem="Q7Q-gw-Sgv" secondAttribute="bottom" constant="8" id="GIh-Ic-Fs0"/>
                             <constraint firstItem="BMX-ff-mN6" firstAttribute="top" secondItem="2Tm-mS-cf7" secondAttribute="bottom" constant="8" id="H1R-2B-jnI"/>
                             <constraint firstItem="jvY-VC-6SS" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="44" id="M2w-5n-k9X"/>
@@ -788,6 +798,7 @@
                             <constraint firstItem="Q7Q-gw-Sgv" firstAttribute="top" secondItem="sKz-8g-PlT" secondAttribute="bottom" constant="8" id="Uco-iV-b7Y"/>
                             <constraint firstItem="BMX-ff-mN6" firstAttribute="leading" secondItem="WRf-dz-KjA" secondAttribute="trailing" constant="13" id="UxG-EY-KX9"/>
                             <constraint firstItem="jvY-VC-6SS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="2" id="WtG-B9-qth"/>
+                            <constraint firstAttribute="trailing" secondItem="EK5-zY-Nct" secondAttribute="trailing" constant="20" symbolic="YES" id="aKg-uN-jIk"/>
                             <constraint firstItem="AR3-Am-K48" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="2" id="d7Z-fd-Tt6"/>
                             <constraint firstItem="2Tm-mS-cf7" firstAttribute="leading" secondItem="Q7Q-gw-Sgv" secondAttribute="trailing" constant="20" id="ivC-4E-pLe"/>
                             <constraint firstItem="2Tm-mS-cf7" firstAttribute="top" secondItem="1UH-3d-niY" secondAttribute="bottom" constant="8" id="jy4-eN-2Xl"/>
@@ -798,6 +809,7 @@
                     <connections>
                         <outlet property="co2Indicator" destination="jvY-VC-6SS" id="dbh-wF-WbO"/>
                         <outlet property="co2Label" destination="2Tm-mS-cf7" id="uft-j4-fBr"/>
+                        <outlet property="slackInput" destination="EK5-zY-Nct" id="DkT-I5-p9J"/>
                         <outlet property="statusLabel" destination="1UH-3d-niY" id="fqI-k4-98C"/>
                         <outlet property="tempIndicator" destination="AR3-Am-K48" id="K3Q-OH-4KC"/>
                         <outlet property="tempLabel" destination="BMX-ff-mN6" id="PwL-yz-cVm"/>
@@ -805,7 +817,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-13" y="533"/>
+            <point key="canvasLocation" x="-13" y="539"/>
         </scene>
     </scenes>
     <resources>

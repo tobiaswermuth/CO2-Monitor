@@ -28,6 +28,8 @@ class ViewController: NSViewController, Co2DeviceDelegate {
   @IBOutlet weak var tempLabel: NSTextField!
   @IBOutlet weak var tempIndicator: NSImageView!
   var tempStatusBarItem: NSStatusItem? = nil
+    
+  @IBOutlet weak var slackInput: NSTextField!
   
   var co2Device: Co2Device? = nil
   
@@ -37,9 +39,7 @@ class ViewController: NSViewController, Co2DeviceDelegate {
     super.viewDidLoad()
     
     // TODO: moisture capacity T in °C => 5.02 + 0.323*T + 8.18e-3*T^2 + 3.12e-4*T^3
-    
-    // TODO: SlackSender(hook: "SLACK_HOOK_URL").sendMessage(text: "test")
-        
+            
     // TODO: show co2 increase over last 10min -> guess number of people in room?
         
     let statusBar = NSStatusBar.system
@@ -70,6 +70,7 @@ class ViewController: NSViewController, Co2DeviceDelegate {
     
     UpdateStatusLabel()
     blinkCo2Indicator()
+    sendSlackMessage()
   }
     
   func ShowWarningAlert() {
@@ -105,6 +106,7 @@ class ViewController: NSViewController, Co2DeviceDelegate {
     
     UpdateStatusLabel()
     blinkTempIndicator()
+    sendSlackMessage()
   }
   
   func OnConnectionStatusUpdated(status: ConnectionStatus) {
@@ -140,6 +142,12 @@ class ViewController: NSViewController, Co2DeviceDelegate {
   func blinkCo2Indicator() {
     co2Indicator.isHidden = false
     Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.hideCo2Indicator), userInfo: nil, repeats: false)
+  }
+    
+  func sendSlackMessage() {
+    if slackInput.stringValue != "" {
+      SlackSender(hook: slackInput.stringValue).sendMessage(text: "\(tempLabel.stringValue) - \(co2Label.stringValue) CO2")
+    }
   }
   
   @objc func hideCo2Indicator() {
